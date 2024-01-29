@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Contact Form 07</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="./contactstyle.css">
+
+	</head>
+	<body>
+		<header>
+			<a href="./index.html" class="logo">J<span class = "innerlogo">A</span></a>
+		</header>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Contact Me!</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="wrapper">
+						<div class="row no-gutters">
+							<div class="col-md-6 d-flex align-items-stretch">
+								<div class="contact-wrap w-100 p-md-5 p-4 py-5">
+									<h3 class="mb-4">Write Joseph</h3>
+									<div id="form-message-warning" class="mb-4"></div> 
+				      		<div id="form-message-success" class="mb-4">
+				            Your message was sent, thank you!
+				      		</div>
+							  <form action="https://formsubmit.co/josephatkinson02@gmail.com" method="POST">
+								  <ul class = "contactForm">
+										<input type="hidden" name = "_subject" value = "New email woooo!">
+										<input type="email" id = "emailBox" class = "form-control" name="email" placeholder="Your email address" required>
+										<input type="text" id = "nameBox" name="name" class="form-control" placeholder="Full Name" required>
+										<br>
+										<input type="phone" id = "phoneBox" name="phone" class="form-control" placeholder="Phone Number" required>
+										<br>
+										<input type="text" id = "input-to-replace" class="form-control" name="message" placeholder="Message" required>
+										<div class="col-md-12">
+											<div class="form-group" id = "messageBox">
+												<textarea name="message" class="form-control" id="message" cols="30" rows="6" placeholder="Your Message"></textarea>
+											</div>
+										</div>
+										<button class = "btn btn-primary" id = "submitButton" type="submit" style="background-color: #840ef3;">Send Message
+									</button>
+								  </ul>
+						   </form>
+									<form method="POST" id="contact-form" name="contactForm" class="contactForm" action = "">
+										<div class="row">
+											<!-- <div class="col-md-12">
+												<div class="form-group">
+													<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+												</div>
+											</div> -->
+											<!-- <div class="col-md-12"> 
+												<div class="form-group">
+													<input type="email" class="form-control" name="email" id="email" placeholder="Email">
+												</div>
+											</div> -->
+											<!-- <div class="col-md-12">
+												<div class="form-group">
+													<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+												</div>
+											</div> -->
+											<!-- <div class="col-md-12">
+												<div class="form-group">
+													<input type="submit" id = "submit-button" value="Send Message" class="btn btn-primary">
+													<div class="submitting"></div>
+												</div>
+											</div> -->
+										</div>
+									</form>
+								</div>
+							</div>
+							<script>
+								var inputToReplace = document.getElementById('input-to-replace');
+								var replacementTextarea = document.getElementById('message');
+
+								var copyValueOver = function(){
+									// You may have to do some fancy encoding of newlines and other nasty bits, depending on what you expect to get.
+									inputToReplace.value = replacementTextarea.value;
+								};
+
+								// This bit may be quite tricky depending on where the data comes from and so on, change and keyup are easy and just to show the way
+								replacementTextarea.addEventListener('change', copyValueOver);
+								replacementTextarea.addEventListener('keyup', copyValueOver);
+							</script>
+							<div class="col-md-6 d-flex align-items-stretch">
+								<div class="info-wrap w-100 p-md-5 p-4 py-5 img">
+									<h3>Contact information</h3>
+									<p class="mb-4">Have any questions? Feel free to call me or reach out below!</p>
+				        	<div class="dbox w-100 d-flex align-items-start">
+				        		<div class="icon d-flex align-items-center justify-content-center">
+				        			<span class="fa fa-map-marker"></span>
+				        		</div>
+				        		<div class="text pl-3">
+					            <p><span>Address:</span> 1209 Margaret St, Thomasville GA</p>
+					          </div>
+				          </div>
+				        	<div class="dbox w-100 d-flex align-items-center">
+				        		<div class="icon d-flex align-items-center justify-content-center">
+				        			<span class="fa fa-phone"></span>
+				        		</div>
+				        		<div class="text pl-3">
+					            <p><span>Phone:</span> <a href="tel://2295519996">+1 229 200 9738</a></p>
+					          </div>
+				          </div>
+				        	<div class="dbox w-100 d-flex align-items-center">
+				        		<div class="icon d-flex align-items-center justify-content-center">
+				        			<span class="fa fa-paper-plane"></span>
+				        		</div>
+				        		<div class="text pl-3">
+					            <p><span>Email:</span> <a href="mailto:josephatkinson02@gmail.com">josephatkinson02
+									@gmail.com</a></p>
+					          </div>
+				          </div>
+				        	<div class="dbox w-100 d-flex align-items-center">
+				        		<div class="icon d-flex align-items-center justify-content-center">
+				        			<span class="fa fa-globe"></span>
+				        		</div>
+				        		<div class="text pl-3">
+					            <p><span>Website</span> <a href="#">josephatkinson.com</a></p>
+					          </div>
+				          </div>
+			          </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="js/main.js"></script>
+
+	</body>
+</html>
+
