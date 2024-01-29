@@ -478,6 +478,9 @@ section {
   .container {
     margin-bottom: -4em;
   }
+  .menu-btn {
+    display: none;
+  }
 }
 
 .main-img img {
