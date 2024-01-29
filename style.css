@@ -407,8 +407,7 @@ section {
     padding: 70px 4%;
   }
   header {
-    padding: 11px 4%;
-    background: #2d2d2d;
+    max-height: 80px;
   }
   .main {
     height: auto;
@@ -424,6 +423,7 @@ section {
     width: auto;
   }
   .main-img img {
+    margin-top: -6em;
     max-width: 400px;
     width: 100%;
     height: auto;
@@ -446,7 +446,7 @@ section {
     flex-direction: column;
   }
   .backCircle {
-    margin-left: 0.85em;
+    margin-left: 0.45em;
     width: 50px;
     height: 50px;
     transition: 1s;
@@ -455,6 +455,28 @@ section {
     min-height: 750px;
     max-width: 90vw;
     transition: 1s;
+  }
+  .navbar {
+    display: none;
+  }
+  .main .num1 {
+    margin-top: 5em;
+  }
+  .main .num2 {
+    margin-top: 1em;
+  }
+  .main-text {
+    align-items: center;
+    justify-content: center;
+  }
+  .socialmedias {
+    margin-left: -1em;
+  }
+  .about-text {
+    margin-top: -8em;
+  }
+  .container {
+    margin-bottom: -4em;
   }
 }
 
