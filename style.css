@@ -470,7 +470,9 @@ section {
     justify-content: center;
   }
   .socialmedias {
-    margin-left: -1em;
+    margin-left: -0.5em;
+    margin-top: 1em;
+    position: relative;
   }
   .about-text {
     margin-top: -8em;
