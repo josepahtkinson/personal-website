@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angela & Joseph</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1 class="couple-names">Angela & Joseph</h1>
+        </div>
+        
+        <div id="countdown-container">
+            <span id="days-left">0</span>
+            <span class="label">Days Until We Say "I Do"</span>
+        </div>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="#" class="nav-link active" data-target="home">HOME</a></li>
+                <li><a href="#" class="nav-link" data-target="gallery">GALLERY</a></li>
+                <li><a href="#" class="nav-link" data-target="schedule">SCHEDULE</a></li>
+                <li><a href="#" class="nav-link" data-target="registry">OUR REGISTRY</a></li>
+                <li><a href="#" class="nav-link" data-target="qa">Q + A</a></li>
+                <li><a href="#" class="nav-link" data-target="travel">TRAVEL</a></li>
+                <li><a href="#" class="nav-link" data-target="things-to-do">THINGS TO DO</a></li>
+                <li><a href="#" class="nav-link" data-target="rsvp">RSVP</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content-area">
+        <section id="home" class="page-section active">
+            
+            <div class="hero-image-container">
+                <img src="./assets/optimized/hero-edited.webp" alt="Angela and Joseph Wedding">
+            </div>
+
+            <div class="home-events-container">
+                <article class="event-block">
+                    <h2 class="event-title">Nuptial Mass</h2>
+                    <div class="event-timing">
+                        <p>SATURDAY, JANUARY 9, 2027</p>
+                        <p>1:00 PM–2:30 PM</p>
+                    </div>
+                    <div class="event-location">
+                        <p class="venue-name">ST TERESA OF AVILA CATHOLIC CHURCH</p>
+                        <p class="venue-address">
+                            4921 Columbia Rd<br>
+                            Grovetown, GA 30813
+                        </p>
+                    </div>
+                </article>
+
+                <div class="event-divider"></div>
+
+                <article class="event-block">
+                    <h2 class="event-title">Reception</h2>
+                    <div class="event-timing">
+                        <p>SATURDAY, JANUARY 9, 2027</p>
+                        <p>5:00 PM–10:00 PM</p>
+                    </div>
+                    <div class="event-location">
+                        <p class="venue-name">SACRED HEART CULTURAL CENTER</p>
+                        <p class="venue-address">
+                            1301 GREENE STREET<br>
+                            AUGUSTA, GA 30901
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+        </section>
+
+        <section id="gallery" class="page-section hidden">
+            <div class="gallery-wrapper">
+                <div class="section-header">
+                    <p class="section-subtitle">A glimpse into our story...</p>
+                </div>
+            
+                <div class="scroll-gallery-grid">
+
+                    <div class="card-animation-layer">
+                        <article class="gallery-card portrait">
+                            <img src="assets/optimized/medicalcollege.webp" alt="Wedding Portrait" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+                
+                    <div class="card-animation-layer">
+                        <article class="gallery-card landscape">
+                            <img src="assets/optimized/stairs.webp" alt="Wedding Details" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+                
+                    <div class="card-animation-layer">
+                        <article class="gallery-card portrait">
+                            <img src="assets/optimized/smile.webp" alt="Wedding Rings" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+                
+                    <div class="card-animation-layer">
+                        <article class="gallery-card square">
+                            <img src="assets/optimized/admiring.webp" alt="Floral Arrangements" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+                
+                    <div class="card-animation-layer">
+                        <article class="gallery-card landscape">
+                            <img src="assets/optimized/house-stairs.webp" alt="Event Lighting" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+                
+                    <div class="card-animation-layer">
+                        <article class="gallery-card portrait">
+                            <img src="assets/optimized/jewelry.webp" alt="Bride and Groom" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+                
+                    <div class="card-animation-layer">
+                        <article class="gallery-card square">
+                            <img src="assets/optimized/arch.webp" alt="Outdoor Wedding Ceremony" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+                
+                    <div class="card-animation-layer">
+                        <article class="gallery-card portrait">
+                            <img src="assets/optimized/hug.webp" alt="Bride Closeup" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+                
+                    <div class="card-animation-layer">
+                        <article class="gallery-card square">
+                            <img src="assets/optimized/fence.webp" alt="Wedding Cake" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+                
+                    <div class="card-animation-layer">
+                        <article class="gallery-card square">
+                            <img src="assets/optimized/proposal.webp" alt="Reception Table Setup" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+                
+                    <div class="card-animation-layer">
+                        <article class="gallery-card portrait">
+                            <img src="assets/optimized/cheek.webp" alt="Wedding Dress" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+                
+                    <div class="card-animation-layer">
+                        <article class="gallery-card landscape">
+                            <img src="assets/optimized/ring-closeup.webp" alt="First Dance" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+                
+                    <div class="card-animation-layer">
+                        <article class="gallery-card portrait">
+                            <img src="assets/optimized/tree.webp" alt="Bridal Bouquet" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+
+                    <div class="card-animation-layer">
+                        <article class="gallery-card landscape">
+                            <img src="assets/optimized/hero-edited.webp" alt="Reception Table Setup" loading="lazy" decoding="async">
+                        </article>
+                    </div>
+                
+                </div>
+            </div>
+        </section>
+
+        <section id="schedule" class="page-section hidden">
+    
+            <div class="schedule-container">
+
+                <div class="location-block">
+                    <div class="location-image-wrapper">
+                        <img src="./st-teresa.png" alt="St. Teresa of Avila Catholic Church" loading="lazy">
+                    </div>
+                    
+                    <div class="location-details">
+                        <h2 class="event-title">Nuptial Mass</h2>
+                        <div class="event-timing">
+                            <p>SATURDAY, JANUARY 9, 2027</p>
+                            <p>1:00 PM</p>
+                        </div>
+                        <div class="event-location">
+                            <p class="venue-name">ST. TERESA OF AVILA</p>
+                            <p class="venue-address">
+                                4921 COLUMBIA RD<br>
+                                GROVETOWN, GA 30813
+                            </p>
+                            <a href="#" class="directions-link">Get Directions</a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="location-block">
+                    <div class="location-details">
+                        <h2 class="event-title">Reception</h2>
+                        <div class="event-timing">
+                            <p>SATURDAY, JANUARY 9, 2027</p>
+                            <p>5:00 PM</p>
+                        </div>
+                        <div class="event-location">
+                            <p class="venue-name">SACRED HEART CULTURAL CENTER</p>
+                            <p class="venue-address">
+                                1301 GREENE RD<br>
+                                AUGUSTA, GA 30901
+                            </p>
+                            <a href="#" class="directions-link">Get Directions</a>
+                        </div>
+                    </div>
+                    
+                    <div class="location-image-wrapper">
+                        <img src="./sacred-heart.png" alt="Sacred Heart Cultural Center" loading="lazy">
+                    </div>
+                </div>
+            
+                <div class="location-block single-column">
+                    <div class="location-details">
+                        <h2 class="event-title">Attire</h2>
+                        <div class="event-location">
+                            <p class="venue-name">BLACK TIE PREFERRED</p>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            </section>
+        
+            <section id="registry" class="page-section hidden">
+                <div class="registry-container">
+                    
+                    <div class="section-header">
+                        <p class="section-subtitle">Your presence is the greatest gift, but if you wish to give...</p>
+                    </div>
+                    
+                    <div class="registry-links">
+                        <a href="#" class="registry-card">
+                            <h3>The Honeymoon Fund</h3>
+                            <p>Help us fly to the Amalfi Coast</p>
+                        </a>
+                        <a href="#" class="registry-card">
+                            <h3>Crate & Barrel</h3>
+                            <p>Home Essentials</p>
+                        </a>
+                        <a href="#" class="registry-card">
+                            <h3>Williams Sonoma</h3>
+                            <p>Kitchenware</p>
+                        </a>
+                    </div>
+            
+                </div>
+            </section>
+
+            <section id="qa" class="page-section hidden">
+                <div class="qa-container">
+                    
+                    <div class="section-header">
+                        <p class="section-subtitle">A few details to help you prepare for our big day...</p>
+                    </div>
+    
+                    <div class="accordion-wrapper">
+                        
+                        <div class="accordion-item">
+                            <button class="accordion-question">
+                                When is the RSVP deadline?
+                                <span class="accordion-icon">+</span>
+                            </button>
+                            <div class="accordion-answer">
+                                <p>Please kindly respond by December 1st, 2026, so we can finalize our numbers with our caterer and venues.</p>
+                            </div>
+                        </div>
+    
+                        <div class="accordion-item">
+                            <button class="accordion-question">
+                                What is the dress code?
+                                <span class="accordion-icon">+</span>
+                            </button>
+                            <div class="accordion-answer">
+                                <p>Black Tie Preferred. We would love to see our family and friends get dressed up for our big day! Think floor-length gowns, formal cocktail dresses, and tuxedos or dark, formal suits.</p>
+                            </div>
+                        </div>
+    
+                        <div class="accordion-item">
+                            <button class="accordion-question">
+                                Are children welcome?
+                                <span class="accordion-icon">+</span>
+                            </button>
+                            <div class="accordion-answer">
+                                <p>We love your little ones! Children under 4 years of age are more than welcome to join us, though please note they will not be assigned their own formal seating in order to maximize space. Any children over the age of 4 must be explicitly listed on your RSVP to attend.</p>
+                            </div>
+                        </div>
+    
+                        <div class="accordion-item">
+                            <button class="accordion-question">
+                                Will the ceremony and reception be indoors?
+                                <span class="accordion-icon">+</span>
+                            </button>
+                            <div class="accordion-answer">
+                                <p>The Nuptial Mass at St. Teresa of Avila and the main reception at Sacred Heart will both be held indoors. However, weather permitting, we will be hosting a lovely cocktail hour in the beautiful outdoor garden area at Sacred Heart before moving inside for the evening!</p>
+                            </div>
+                        </div>
+    
+                        <div class="accordion-item">
+                            <button class="accordion-question">
+                                Is parking available at the venues?
+                                <span class="accordion-icon">+</span>
+                            </button>
+                            <div class="accordion-answer">
+                                <p>Yes! Both the church in Grovetown and the Cultural Center in Augusta have ample, free parking available on-site for all of our guests.</p>
+                            </div>
+                        </div>
+    
+                        <div class="accordion-item">
+                            <button class="accordion-question">
+                                Can I bring a plus one?
+                                <span class="accordion-icon">+</span>
+                            </button>
+                            <div class="accordion-answer">
+                                <p>We are incredibly blessed to have a large number of loved ones wanting to celebrate with us! Due to strict venue capacity limits, we are only able to accommodate guests who are specifically named on your invitation. To see exactly who in your party is invited, please navigate to the RSVP page and enter your name.</p>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </section>
+
+            <section id="travel" class="page-section hidden">
+                <div class="travel-container">
+                    
+                    <div class="section-header">
+                        <p class="section-subtitle">For our family and friends joining us from afar...</p>
+                    </div>
+    
+                    <h3 class="travel-category-title">Flights</h3>
+                    <div class="travel-grid">
+                        <div class="travel-card">
+                            <h4>Augusta Regional Airport (AGS)</h4>
+                            <p>The most convenient option. AGS is a quick 15-minute drive from downtown Augusta and our reception venue.</p>
+                        </div>
+                        <div class="travel-card">
+                            <h4>Hartsfield-Jackson Atlanta (ATL)</h4>
+                            <p>Often offers more direct flights and better rates. ATL is about a 2-hour and 15-minute drive to the Augusta area.</p>
+                        </div>
+                    </div>
+    
+                    <h3 class="travel-category-title">Accommodations</h3>
+                    <div class="travel-grid">
+                        <div class="travel-card">
+                            <h4>The Augusta Marriott</h4>
+                            <p>We have secured a block of rooms at a discounted rate. This hotel is located downtown, just minutes from the Sacred Heart Cultural Center.</p>
+                            <a href="#" class="travel-link">Book with our Group Rate</a>
+                        </div>
+                        <div class="travel-card">
+                            <h4>The Partridge Inn</h4>
+                            <p>A historic, boutique option located in the beautiful Summerville neighborhood of Augusta. We do not have a formal block here, but highly recommend it!</p>
+                            <a href="#" class="travel-link">Visit Website</a>
+                        </div>
+                    </div>
+    
+                    <h3 class="travel-category-title">Getting Around</h3>
+                    <div class="travel-grid single-card">
+                        <div class="travel-card">
+                            <h4>Rental Cars & Rideshares</h4>
+                            <p>While Uber and Lyft are readily available in the downtown Augusta area near the reception, we recommend renting a car if you are flying into Atlanta or wish to easily travel between Grovetown and Augusta.</p>
+                        </div>
+                    </div>
+    
+                </div>
+            </section>
+
+            <section id="things-to-do" class="page-section hidden">
+                <div class="travel-container"> 
+                    <div class="section-header">
+                        <p class="section-subtitle">A few of our favorite local spots to check out while you're in town...</p>
+                    </div>
+    
+                    <h3 class="travel-category-title">Eats & Coffee</h3>
+                    <div class="travel-grid">
+                        <div class="travel-card">
+                            <h4>Mirin Fusion Kitchen</h4>
+                            <p>Our go-to spot everytime we go back to Evans! They have incredible Asian fusion dishes and a really great, modern atmosphere.</p>
+                        </div>
+                        <div class="travel-card">
+                            <h4>Takosushi (Evans)</h4>
+                            <p>A fun and eclectic mix of Mexican, Southwestern, and Asian food (including amazing sushi). Highly recommend checking out the Evans location.</p>
+                        </div>
+                        <div class="travel-card">
+                            <h4>Rooted Coffeehouse</h4>
+                            <p>The perfect spot to grab your morning latte. We love their coffee and it's a great little relaxing environment to start your day.</p>
+                        </div>
+                    </div>
+    
+                    <h3 class="travel-category-title">Explore Augusta</h3>
+                    <div class="travel-grid">
+                        <div class="travel-card">
+                            <h4>Augusta Riverwalk</h4>
+                            <p>A beautiful brick walking path situated directly along the Savannah River. It's a classic Augusta experience and a great way to enjoy the weather.</p>
+                        </div>
+                        <div class="travel-card">
+                            <h4>Savannah River Brewing Co.</h4>
+                            <p>If you're looking for a relaxed place to grab a drink and hang out, this local brewery is a fantastic spot right in downtown Augusta.</p>
+                        </div>
+                    </div>
+    
+                </div>
+            </section>
+
+            <section id="rsvp" class="page-section hidden">
+                <div class="rsvp-container">
+                    
+                    <div class="section-header">
+                        <p class="section-subtitle">We look forward to celebrating with you.</p>
+                    </div>
+    
+                    <div id="searchSection" class="rsvp-step">
+                        <p class="search-prompt">Please enter your name to find your invitation.</p>
+                        
+                        <div class="input-group">
+                            <input type="text" id="firstNameInput" placeholder="First Name" class="rsvp-input">
+                            <input type="text" id="lastNameInput" placeholder="Last Name" class="rsvp-input">
+                        </div>
+                        
+                        <p id="searchError" class="error-text hidden">We couldn't find an invitation under that exact name. Please try checking your spelling.</p>
+                        
+                        <button id="searchBtn" class="primary-btn mt-large">
+                            <span id="searchText">Find Invitation</span>
+                            <span id="searchLoader" class="loader hidden"></span>
+                        </button>
+                    </div>
+    
+                    <div id="suiteSection" class="rsvp-step hidden">
+                        <div class="rsvp-card">
+                            <div class="card-border-outer"></div>
+                            <div class="card-border-inner"></div>
+    
+                            <p class="card-overline">Kindly Respond</p>
+                            <h3 class="card-title">Wedding Celebration</h3>
+                            <p class="card-date">January 9, 2027</p>
+    
+                            <div id="guestListContainer" class="guest-list-wrapper">
+                                </div>
+                        </div>
+    
+                        <button id="submitBtn" class="primary-btn outline-btn mt-large">
+                            <span id="submitText">Send RSVPs</span>
+                            <span id="submitLoader" class="loader hidden"></span>
+                        </button>
+                    </div>
+    
+                    <div id="successSection" class="rsvp-step hidden">
+                        <h2 class="success-title">Thank You</h2>
+                        <p class="success-message">Your responses have been recorded.</p>
+                    </div>
+    
+                </div>
+            </section>
+    </main>
+
+    <div id="lightbox-modal" class="lightbox-hidden">
+        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-prev">&#10094;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Maximized Gallery Image">
+        <span class="lightbox-next">&#10095;</span>
+    </div>
+
+    <footer class="wedding-footer">
+    
+        <div class="footer-perspective-wrapper">
+            <div class="rotating-element-block">
+                <span class="footer-initials">A & J</span>
+            </div>
+        </div>
+        
+        <hr class="footer-separator">
+        <span class="footer-date">1.9.2027</span>
+        <span class="footer-attribution">Website designed by yours truly</span>
+        
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+</html>
