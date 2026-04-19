@@ -310,4 +310,44 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    const dressCodeLink = document.getElementById('link-to-dress-code');
+
+    if (dressCodeLink) {
+        dressCodeLink.addEventListener('click', function(e) {
+            e.preventDefault(); 
+
+            // 1. Hide all sections and show your specific 'qa' section
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById('qa').classList.remove('hidden');
+
+            // 2. NEW: Update the Masthead Navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active'); // Remove highlight from all links
+            });
+            
+            // Find the Q&A link and highlight it 
+            // (Make sure 'qa' matches exactly what is in your data-target attribute!)
+            const qaNavLink = document.querySelector('.nav-link[data-target="qa"]');
+            if (qaNavLink) {
+                qaNavLink.classList.add('active');
+            }
+
+            // 3. Find the dress code item and its button
+            const dressCodeAccordion = document.getElementById('faq-dress-code');
+            const dressCodeButton = dressCodeAccordion.querySelector('.accordion-question');
+
+            // 4. Force it open (Simulate a click if it isn't already open)
+            if (!dressCodeAccordion.classList.contains('active')) {
+                dressCodeButton.click(); 
+            }
+
+            // 5. Scroll smoothly
+            setTimeout(() => {
+                dressCodeAccordion.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 50);
+        });
+    }
 });
