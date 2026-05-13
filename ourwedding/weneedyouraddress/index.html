@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Address Form</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Base Page Styles --- */
+        body {
+            background-color: #f4f4f4; 
+            margin: 0;
+            padding: 40px 0;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* --- RSVP Container Styles --- */
+        .rsvp-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0px 20px;
+            text-align: center;
+        }
+
+        .rsvp-step {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #666;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        /* --- Input & Form Styles --- */
+        .input-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .rsvp-input {
+            width: 50%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #aaa;
+            padding: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #1a1a1a;
+            transition: border-color 0.3s ease;
+        }
+
+        .rsvp-input:focus {
+            outline: none;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        /* --- Address Form Specific Layouts --- */
+        .address-form-wrapper {
+            margin-top: 35px;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .w-100 { width: 100% !important; }
+        .w-50 { width: 50% !important; }
+
+        .input-group.custom-gap {
+            gap: 15px;
+            width: 100%;
+        }
+
+        /* Mobile Responsiveness for inputs */
+        @media (max-width: 480px) {
+            .input-group.mobile-stack {
+                flex-direction: column;
+                gap: 25px;
+            }
+            .input-group.mobile-stack .rsvp-input {
+                width: 100% !important;
+                flex: none;
+            }
+        }
+
+        /* --- Button & Loader Styles --- */
+        .mt-large { margin-top: 40px; }
+
+        .primary-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background-color: #1a1a1a;
+            color: #fcfcfc;
+            border: 1px solid #1a1a1a;
+            padding: 12px 30px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 250px;
+        }
+
+        .primary-btn:hover {
+            background-color: #333;
+        }
+
+        .primary-btn:disabled {
+            background-color: #888;
+            border-color: #888;
+            cursor: not-allowed;
+        }
+
+        .loader {
+            animation: spin 1s linear infinite; 
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top: 2px solid #fff;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* --- Card & Typography Styles --- */
+        .rsvp-card {
+            background-color: #fff;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+
+        .card-border-outer {
+            position: absolute;
+            inset: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            pointer-events: none;
+        }
+
+        .card-border-inner {
+            position: absolute;
+            inset: 22px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            pointer-events: none;
+        }
+
+        .card-overline {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            line-height: 1;
+            margin: 0;
+        }
+
+        .success-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 5rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .success-message {
+            font-size: 1.3rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="address-collection" class="page-section">
+        <div class="rsvp-container">
+            
+            <div class="section-header" id="headerSection">
+                <p class="section-subtitle">Please share your details for Angela and Joseph's big day!</p>
+            </div>
+
+            <div id="addressSection" class="rsvp-step">
+                <div class="rsvp-card">
+                    <div class="card-border-outer"></div>
+                    <div class="card-border-inner"></div>
+
+                    <p class="card-overline">Let's Keep in Touch</p>
+                    <h3 class="card-title">Mailing Address</h3>
+                    
+                    <form id="addressForm" class="address-form-wrapper">
+                        
+                        <div class="input-group custom-gap mobile-stack">
+                            <input type="text" id="firstName" placeholder="First Name" class="rsvp-input w-50" required>
+                            <input type="text" id="lastName" placeholder="Last Name" class="rsvp-input w-50" required>
+                        </div>
+                        
+                        <div class="input-group custom-gap">
+                            <input type="text" id="streetAddress" placeholder="Street Address" class="rsvp-input w-100" required>
+                        </div>
+
+                        <div class="input-group custom-gap">
+                            <input type="text" id="aptSuite" placeholder="Apt, Suite, etc. (Optional)" class="rsvp-input w-100">
+                        </div>
+
+                        <div class="input-group custom-gap">
+                            <input type="text" id="city" placeholder="City" class="rsvp-input w-100" required>
+                        </div>
+
+                        <div class="input-group custom-gap mobile-stack">
+                            <input type="text" id="state" placeholder="State" class="rsvp-input w-50" required>
+                            <input type="text" id="zipCode" placeholder="Zip Code" class="rsvp-input w-50" required>
+                        </div>
+
+                        <div class="input-group custom-gap mobile-stack">
+                            <input type="text" id="country" placeholder="Country" class="rsvp-input w-50" required>
+                            <input type="email" id="email" placeholder="Email Address" class="rsvp-input w-50" required>
+                        </div>
+                        
+                    </form>
+                </div>
+
+                <button id="submitAddressBtn" class="primary-btn mt-large" type="button">
+                    <span id="submitText">Submit Details</span>
+                    <span id="submitLoader" class="loader hidden"></span>
+                </button>
+            </div>
+
+            <div id="successSection" class="rsvp-step hidden mt-large">
+                <h2 class="success-title">Thank You</h2>
+                <p class="success-message">We've safely recorded your mailing address.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        const webAppUrl = "https://script.google.com/macros/s/AKfycbw_mt2SzcQaITzSRdvEEcJUnk8LYEW1BdGkBgsLqus-1qlp-JR84zjjV_mIKQEk1UiR/exec";
+
+        const submitBtn = document.getElementById('submitAddressBtn');
+        const submitText = document.getElementById('submitText');
+        const submitLoader = document.getElementById('submitLoader');
+        const addressSection = document.getElementById('addressSection');
+        const headerSection = document.getElementById('headerSection');
+        const successSection = document.getElementById('successSection');
+
+        submitBtn.addEventListener('click', async () => {
+            // 1. Gather all the input values
+            const payload = {
+                action: 'submitAddress',
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                streetAddress: document.getElementById('streetAddress').value,
+                aptSuite: document.getElementById('aptSuite').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zipCode: document.getElementById('zipCode').value,
+                country: document.getElementById('country').value,
+                email: document.getElementById('email').value
+            };
+
+            // Basic validation: ensure critical fields aren't empty
+            if (!payload.firstName || !payload.lastName || !payload.streetAddress || !payload.city || !payload.state || !payload.zipCode) {
+                alert("Please fill out the required address fields before submitting.");
+                return;
+            }
+
+            // 2. Show loading UI and disable button to prevent double clicks
+            submitText.classList.add('hidden');
+            submitLoader.classList.remove('hidden');
+            submitBtn.disabled = true;
+
+            // 3. Send the POST request to Google Apps Script
+            try {
+                const response = await fetch(webAppUrl, {
+                    method: "POST",
+                    body: JSON.stringify(payload),
+                    headers: {
+                        "Content-Type": "text/plain;charset=utf-8", 
+                    }
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Hide form, show success
+                    addressSection.classList.add('hidden');
+                    headerSection.classList.add('hidden');
+                    successSection.classList.remove('hidden');
+                    console.log(result.data); 
+                } else {
+                    throw new Error(result.error);
+                }
+
+            } catch (error) {
+                alert("Something went wrong saving your address. Please try again.");
+                console.error("Error:", error);
+                
+                // Reset button state on error
+                submitText.classList.remove('hidden');
+                submitLoader.classList.add('hidden');
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+
+</body>
+</html>
