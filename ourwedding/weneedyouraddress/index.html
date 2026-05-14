@@ -3,7 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Address Form</title>
+    <title>We're Getting Married! (And we need your address)</title>
+    <meta name="title" content="We're Getting Married! (And we need your address)">
+    <meta name="description" content="Please share your mailing address with Joseph and Angela so we can send you our Save the Date!">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="We're Getting Married! (And we need your address)">
+    <meta property="og:description" content="Please share your mailing address with Joseph and Angela for their big day!">
+    <meta property="og:image" content="https://josephandangela.netlify.app/assets/cheek-preview.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="We're Getting Married! (And we need your address)">
+    <meta property="twitter:description" content="Please share your mailing address with Joseph and Angela for their big day!">
+    <meta property="twitter:image" content="https://josephandangela.netlify.app/assets/cheek-preview.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
 
@@ -54,6 +66,7 @@
             text-align: center;
             color: #1a1a1a;
             transition: border-color 0.3s ease;
+            box-sizing: border-box;
         }
 
         .rsvp-input:focus {
@@ -62,32 +75,54 @@
         }
 
         /* --- Address Form Specific Layouts --- */
+        /* --- New Address Form Specific Styles --- */
         .address-form-wrapper {
-            margin-top: 35px;
+            margin-top: 25px; /* Tighter to save vertical space */
             position: relative;
             z-index: 10;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 15px; /* Tighter vertical gaps */
         }
 
-        .w-100 { width: 100% !important; }
-        .w-50 { width: 50% !important; }
+        /* THE FIX: Stop inputs from ignoring container bounds */
+        .rsvp-input {
+            box-sizing: border-box !important;
+            min-width: 0 !important; /* Forces inputs to shrink even if the placeholder is long */
+        }
+
+        .w-100 { 
+            width: 100% !important; 
+        }
+
+        .w-50 { 
+            width: 100% !important; /* Overrides the old 50% */
+            flex: 1 1 0% !important; /* Lets flexbox perfectly split the space minus the gap */
+        }
 
         .input-group.custom-gap {
             gap: 15px;
             width: 100%;
+            box-sizing: border-box;
         }
 
-        /* Mobile Responsiveness for inputs */
+        /* Mobile Responsiveness */
         @media (max-width: 480px) {
+            /* Pull the card borders inward so they don't clip the text */
+            .rsvp-card { padding: 25px 15px; margin-top: 10px; }
+            .card-border-outer { inset: 8px; }
+            .card-border-inner { inset: 12px; }
+            
+            /* Keep inputs side-by-side! */
             .input-group.mobile-stack {
-                flex-direction: column;
-                gap: 25px;
+                flex-direction: row; 
+                gap: 10px; /* Tighter horizontal gap on small screens */
             }
-            .input-group.mobile-stack .rsvp-input {
-                width: 100% !important;
-                flex: none;
+            
+            /* Slightly smaller text/padding to fit the side-by-side placeholders */
+            .rsvp-input {
+                font-size: 1.05rem;
+                padding: 8px 2px;
             }
         }
 
