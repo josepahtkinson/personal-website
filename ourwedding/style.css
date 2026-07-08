@@ -737,7 +737,7 @@ main {
 }
 
 .guest-list-wrapper {
-    margin-top: 40px;
+    margin-top: 20px;
     text-align: left;
     position: relative;
     z-index: 10;
@@ -951,6 +951,46 @@ main {
     background-color: #fafafa;
     color: #888;
     text-align: center;
+}
+
+/* --- RSVP Guest Name Inputs --- */
+.guest-name-inputs {
+    display: flex;
+    flex-wrap: wrap;       /* This lets the inputs roll over to the next line on smaller screens */
+    gap: 15px;             /* Space between the first and last name fields */
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.name-input {
+    flex: 1;               /* Allows the inputs to grow and fill the available space evenly */
+    min-width: 180px;      /* Prevents them from getting too squished before wrapping */
+    
+    /* Remove the default box and replace it with a classic stationary line */
+    border: none;
+    border-bottom: 1px solid #d4c8b2; /* A soft taupe/gold to match the card's outer border */
+    background: transparent;
+    
+    /* Typography matching the instructional text */
+    font-family: inherit;  /* Automatically uses the serif font of your card */
+    font-size: 0.9em;      /* Adjust this to match the exact size of the text above */
+    font-style: italic;
+    color: #333;           /* Your standard text color */
+    
+    padding: 8px 4px;
+    transition: border-color 0.3s ease;
+}
+
+/* Subtle change when the user clicks to type */
+.name-input:focus {
+    outline: none;
+    border-bottom: 2px solid #7c8ea1; /* A muted slate blue to tie in with the 'We look forward' text */
+}
+
+/* Soften the placeholder text so it doesn't overpower the design */
+.name-input::placeholder {
+    color: #a0a0a0;
+    font-style: italic;
 }
 
 @keyframes fadeIn {

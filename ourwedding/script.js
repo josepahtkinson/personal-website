@@ -204,9 +204,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentPartyGuests = result.data;
                 
                 finalResponses = currentPartyGuests.map(g => ({
-                    firstName: g['First Name(s)'],
-                    lastName: g['Last Name(s)'],
-                    attending: g['Attending'] || ''
+                    originalFirstName: g['First Name(s)'],
+                    originalLastName: g['Last Name(s)'],
+                    newFirstName: g['First Name(s)'],
+                    newLastName: g['Last Name(s)'],
+                    attending: g['Attending'] || '',
+                    rowNumber: g._sheetRowNumber
                 }));
 
                 buildGuestList();
@@ -234,49 +237,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function buildGuestList() {
-        guestListContainer.innerHTML = ''; 
+    guestListContainer.innerHTML = ''; 
+    let hasGuest = false;
 
-        currentPartyGuests.forEach((guest, index) => {
-            const fName = guest['First Name(s)'];
-            const lName = guest['Last Name(s)'];
-            const guestName = `${fName} ${lName}`;
-            const htmlId = `guest_${index}`;
+    currentPartyGuests.forEach((guest, index) => {
+        const fName = guest['First Name(s)'];
+        const lName = guest['Last Name(s)'];
+        const isGuestPlaceholder = fName.trim().toLowerCase() === 'guest';
+        
+        if (isGuestPlaceholder) hasGuest = true;
 
-            const safeFName = fName.replace(/'/g, "\\'");
-            const safeLName = lName.replace(/'/g, "\\'");
+        const htmlId = `guest_${index}`;
+        const safeFName = fName.replace(/'/g, "\\'");
+        const safeLName = lName.replace(/'/g, "\\'");
 
-            const guestHTML = `
-                <div class="guest-row">
-                    <h4>${guestName}</h4>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="attending_${htmlId}" value="Yes" class="radio-input" 
-                                   onchange="updateAttendance('${safeFName}', '${safeLName}', 'Yes')">
-                            <div class="radio-box"></div>
-                            Joyfully Accepts
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="attending_${htmlId}" value="No" class="radio-input" 
-                                   onchange="updateAttendance('${safeFName}', '${safeLName}', 'No')">
-                            <div class="radio-box"></div>
-                            Regretfully Declines
-                        </label>
-                    </div>
+        // If it's a placeholder, render inputs. Otherwise, just text.
+        const nameUI = isGuestPlaceholder ? `
+            <div class="guest-name-inputs">
+                <input type="text" placeholder="Guest's First Name" class="name-input" required
+                       oninput="updateGuestName('${safeFName}', '${safeLName}', this.value, 'first')">
+                <input type="text" placeholder="Guest's Last Name" class="name-input" value="${lName !== 'Guest' ? lName : ''}" required
+                       oninput="updateGuestName('${safeFName}', '${safeLName}', this.value, 'last')">
+            </div>
+        ` : `<h4>${fName} ${lName}</h4>`;
+
+        const guestHTML = `
+            <div class="guest-row">
+                ${nameUI}
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="attending_${htmlId}" value="Yes" class="radio-input" 
+                               onchange="updateAttendance('${safeFName}', '${safeLName}', 'Yes')">
+                        <div class="radio-box"></div>
+                        Joyfully Accepts
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="attending_${htmlId}" value="No" class="radio-input" 
+                               onchange="updateAttendance('${safeFName}', '${safeLName}', 'No')">
+                        <div class="radio-box"></div>
+                        Regretfully Declines
+                    </label>
                 </div>
-            `;
-            guestListContainer.insertAdjacentHTML('beforeend', guestHTML);
-        });
-    }
+            </div>
+        `;
+        guestListContainer.insertAdjacentHTML('beforeend', guestHTML);
+    });
 
-    window.updateAttendance = function(fName, lName, status) {
-        const guestRecord = finalResponses.find(g => g.firstName === fName && g.lastName === lName);
-        if (guestRecord) {
-            guestRecord.attending = status;
-        }
-    };
+    // Add the instruction text if someone has a plus-one
+    if (hasGuest) {
+        const instructionHTML = `
+            <p class="section-subtitle" style="margin-top: 0px; margin-bottom: 20px; font-style: italic;">
+                We have reserved a plus one for you! Please type the first and last name of your guest below.
+            </p>`;
+        guestListContainer.insertAdjacentHTML('afterbegin', instructionHTML);
+    }
+}
+
+    window.updateGuestName = function(origFName, origLName, newName, type) {
+    const guestRecord = finalResponses.find(g => 
+        g.originalFirstName === origFName && g.originalLastName === origLName
+    );
+    if (guestRecord) {
+        if (type === 'first') guestRecord.newFirstName = newName.trim();
+        if (type === 'last') guestRecord.newLastName = newName.trim();
+    }
+};
+
+window.updateAttendance = function(origFName, origLName, status) {
+    const guestRecord = finalResponses.find(g => 
+        g.originalFirstName === origFName && g.originalLastName === origLName
+    );
+    
+    if (guestRecord) {
+        guestRecord.attending = status;
+    } else {
+        // This will print to your browser's developer console if there's a mismatch
+        console.error("Uh oh, couldn't find a match for:", origFName, origLName); 
+    }
+};
 
     if(submitBtn) {
         submitBtn.addEventListener('click', async () => {
+            console.log("Final Responses State Before Submit:", finalResponses);
             const missingResponses = finalResponses.some(g => g.attending === '');
             if (missingResponses) {
                 alert("Please select an RSVP response for every member of your party.");
@@ -308,46 +350,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('submitLoader').classList.add('hidden');
                 submitBtn.disabled = false;
             }
-        });
-    }
-
-    const dressCodeLink = document.getElementById('link-to-dress-code');
-
-    if (dressCodeLink) {
-        dressCodeLink.addEventListener('click', function(e) {
-            e.preventDefault(); 
-
-            // 1. Hide all sections and show your specific 'qa' section
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.classList.add('hidden');
-            });
-            document.getElementById('qa').classList.remove('hidden');
-
-            // 2. NEW: Update the Masthead Navigation
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active'); // Remove highlight from all links
-            });
-            
-            // Find the Q&A link and highlight it 
-            // (Make sure 'qa' matches exactly what is in your data-target attribute!)
-            const qaNavLink = document.querySelector('.nav-link[data-target="qa"]');
-            if (qaNavLink) {
-                qaNavLink.classList.add('active');
-            }
-
-            // 3. Find the dress code item and its button
-            const dressCodeAccordion = document.getElementById('faq-dress-code');
-            const dressCodeButton = dressCodeAccordion.querySelector('.accordion-question');
-
-            // 4. Force it open (Simulate a click if it isn't already open)
-            if (!dressCodeAccordion.classList.contains('active')) {
-                dressCodeButton.click(); 
-            }
-
-            // 5. Scroll smoothly
-            setTimeout(() => {
-                dressCodeAccordion.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 50);
         });
     }
 });
