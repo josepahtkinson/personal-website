@@ -341,7 +341,7 @@ window.updateAttendance = function(origFName, origLName, status) {
                     const everyoneDeclined = finalResponses.length > 0 &&
                         finalResponses.every(guest => guest.attending === 'No');
                     document.getElementById('rsvpSubtitle').textContent = everyoneDeclined
-                        ? "Thank you for letting us know. We’ll miss you, but we appreciate your love and well wishes!"
+                        ? "We’ll miss you, but we appreciate your love and well wishes!"
                         : 'We look forward to celebrating with you.';
                     suiteSection.classList.add('hidden');
                     successSection.classList.remove('hidden');
