@@ -401,12 +401,15 @@ main {
 }
 
 .registry-links {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 30px;
 }
 
 .registry-card {
+    flex: 0 0 calc((100% - 60px) / 3);
+    min-width: 280px;
     border: 1px solid #333;
     padding: 50px 30px;
     text-align: center;
@@ -1167,11 +1170,12 @@ main {
     }
 
     .registry-links {
-        grid-template-columns: 1fr;
         gap: 20px;
     }
 
     .registry-card {
+        flex-basis: 100%;
+        min-width: 0;
         padding: 35px 25px;
     }
 
